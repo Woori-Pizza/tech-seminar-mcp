@@ -1,355 +1,158 @@
-import HoverDropdown from "./HoverDropdown";
+import { useEffect, useRef } from "react";
+import $ from "jquery";
+import { GNB_DATA, ALL_SERVICE_DATA, LANGUAGES } from "../data/mockData";
+import { SquareBtn } from "./icons/SquareBtn";
 
 export default function LegacyHeader() {
+  const headerRef = useRef(null);
+  
+  useEffect(() => {
+    const $header = $(headerRef.current);
+    
+    // [jQuery] 클릭 시 메뉴 토글 로직
+    $header.find(".js-click-item").on("click", function (e) {
+      e.stopPropagation();
+      const $panel = $(this).find(".js-dropdown-panel");
+      $(".js-dropdown-panel").not($panel).hide();
+      $panel.toggle();
+    });
+    
+    $(document).on("click", () => $(".js-dropdown-panel").hide());
+    
+    return () => {
+      $header.find(".js-click-item").off();
+      $(document).off("click");
+    };
+  }, []);
+
   return (
-    <header className="w-full border-b border-[#d9d9d9] bg-white">
-      <div className="mx-auto w-[980px] h-[66px] flex items-center">
-        {/* 왼쪽: 로고 + 로그인/공인인증센터 */}
-        <div className="flex items-center gap-4 min-w-[210px]">
-          <h1 className="flex items-center">
+    <header className="w-full border-b border-[#d9d9d9] bg-white relative z-[1000]" ref={headerRef}>
+      <div className="mx-auto w-[980px] h-[66px] flex items-center justify-between">
+        
+        {/* 왼쪽: 로고 + 로그인/공인인증센터 (정렬 수정) */}
+        <div className="flex items-center gap-5">
+          <h1 className="flex items-center cursor-pointer">
             <img
               alt="우리은행"
               src="https://web.archive.org/web/20190227033832im_/https://simg.wooribank.com/img/intro/header/h1.png"
               className="h-[34px]"
             />
           </h1>
-
-          <div className="flex items-center gap-1 text-[12px] whitespace-nowrap">
-            {/* 로그인 hover */}
-            <HoverDropdown
-              align="left"
-              trigger={
-                <button
-                  type="button"
-                  className="h-[22px] px-2 rounded bg-[#6E6E6E] border border-[#6E6E6E] font-bold text-white hover:bg-[#5f5f5f] whitespace-nowrap"
-                  data-testid="header-login"
-                >
-                  로그인
-                </button>
-              }
-            >
-              <div className="px-3 py-2 text-[12px] text-[#333] whitespace-nowrap">
-                <div className="flex items-center gap-2">
-                  <a className="hover:underline" href="#">
-                    개인뱅킹
-                  </a>
-                  <span className="text-[#999]">|</span>
-                  <a className="hover:underline" href="#">
-                    기업뱅킹
-                  </a>
-                </div>
+          <div className="flex items-center gap-1 h-full">
+            {/* 로그인 */}
+            <div className="js-click-item relative cursor-pointer">
+              <button
+                type="button"
+                className="h-[26px] px-2 rounded bg-[#6E6E6E] text-white font-bold text-[12px] whitespace-nowrap pointer-events-none cursor-pointer"
+              >
+                로그인
+              </button>
+              <div className="js-dropdown-panel absolute top-[34px] left-0 hidden bg-white border border-[#d9d9d9] shadow-md p-3 min-w-[150px] text-[12px] z-50">
+                <a className="hover:underline cursor-pointer" href="#">개인뱅킹</a> |{" "}
+                <a className="hover:underline cursor-pointer" href="#">기업뱅킹</a>
               </div>
-            </HoverDropdown>
-
-            {/* 공인인증센터 hover */}
-            <HoverDropdown
-              align="left"
-              trigger={
-                <button
-                  type="button"
-                  className="h-[22px] px-3 rounded bg-white hover:bg-[#eaeaea] text-[#333] border border-transparent whitespace-nowrap"
-                  data-testid="header-cert"
-                >
-                  공인인증센터
-                </button>
-              }
-            >
-              <div className="px-3 py-2 text-[12px] text-[#333] whitespace-nowrap">
-                <div className="flex items-center gap-2">
-                  <a className="hover:underline" href="#">
-                    개인
-                  </a>
-                  <span className="text-[#999]">|</span>
-                  <a className="hover:underline" href="#">
-                    기업
-                  </a>
-                </div>
+            </div>
+            {/* 공인인증센터 (텍스트 줄바꿈 방지) */}
+            <div className="js-click-item relative cursor-pointer">
+              <button
+                type="button"
+                className="h-[26px] px-2 rounded bg-white text-[#333] border border-[#ccc] text-[12px] whitespace-nowrap pointer-events-none cursor-pointer"
+              >
+                공인인증센터
+              </button>
+              <div className="js-dropdown-panel absolute top-[34px] left-0 hidden bg-white border border-[#d9d9d9] shadow-md p-3 min-w-[120px] text-[12px] z-50">
+                <a className="hover:underline cursor-pointer" href="#">개인</a> |{" "}
+                <a className="hover:underline cursor-pointer" href="#">기업</a>
               </div>
-            </HoverDropdown>
+            </div>
           </div>
         </div>
 
         {/* 가운데: GNB */}
-        <nav className="flex-1 flex items-center justify-center gap-1 flex-nowrap whitespace-nowrap">
-          {/* 개인 (hover 메뉴) */}
-          <HoverDropdown
-            align="center"
-            trigger={
+        <nav className="flex items-center gap-1">
+          {GNB_DATA.map((menu) => (
+            <div key={menu.label} className="js-click-item relative cursor-pointer">
               <button
                 type="button"
-                className="h-[46px] px-2 text-[13px] font-bold text-[#333] hover:text-[#0b78b6] whitespace-nowrap"
-                data-testid="gnb-개인"
+                className="h-[66px] px-1 text-[14px] font-bold text-[#333] whitespace-nowrap pointer-events-none cursor-pointer hover:text-[#0b78b6]"
               >
-                개인
+                {menu.label}
               </button>
-            }
-          >
-            <div className="px-4 py-3 text-[12px] text-[#333] whitespace-nowrap">
-              <div className="font-bold mb-2">개인뱅킹</div>
-              <ul className="space-y-1">
-                {[
-                  "조회",
-                  "이체",
-                  "공과금",
-                  "예금/신탁",
-                  "펀드",
-                  "보험",
-                  "대출",
-                  "외환/골드",
-                  "퇴직연금",
-                  "뱅킹관리",
-                  "ISA",
-                ].map((t) => (
-                  <li key={t}>
-                    <a href="#" className="hover:underline">
-                      {t}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </HoverDropdown>
-
-          {/* 기업 (hover 메뉴) */}
-          <HoverDropdown
-            align="center"
-            trigger={
-              <button
-                type="button"
-                className="h-[46px] px-2 text-[13px] font-bold text-[#333] hover:text-[#0b78b6] whitespace-nowrap"
-                data-testid="gnb-기업"
-              >
-                기업
-              </button>
-            }
-          >
-            <div className="px-4 py-3 text-[12px] text-[#333] whitespace-nowrap">
-              <div className="font-bold mb-2">기업뱅킹</div>
-              <ul className="space-y-1">
-                {[
-                  "조회",
-                  "이체",
-                  "공과금",
-                  "전자결제",
-                  "수표어음",
-                  "자금관리",
-                  "예금/신탁",
-                  "대출",
-                  "펀드/보험",
-                  "외환",
-                  "퇴직연금",
-                  "뱅킹관리",
-                ].map((t) => (
-                  <li key={t}>
-                    <a href="#" className="hover:underline">
-                      {t}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </HoverDropdown>
-
-          {/* 카드 (그냥 버튼) */}
-          <button
-            type="button"
-            className="h-[46px] px-2 text-[13px] font-bold text-[#333] hover:text-[#0b78b6] whitespace-nowrap"
-            data-testid="gnb-카드"
-          >
-            카드
-          </button>
-
-          {/* 자산관리 (hover 메뉴) */}
-          <HoverDropdown
-            align="center"
-            trigger={
-              <button
-                type="button"
-                className="h-[46px] px-2 text-[13px] font-bold text-[#333] hover:text-[#0b78b6] whitespace-nowrap"
-                data-testid="gnb-자산관리"
-              >
-                자산관리
-              </button>
-            }
-          >
-            <div className="px-4 py-3 text-[12px] text-[#333] whitespace-nowrap">
-              <div className="font-bold mb-2">자산관리</div>
-              <ul className="space-y-1">
-                {["로보/전문가설계", "펀드마켓", "은퇴설계", "재무설계"].map(
-                  (t) => (
-                    <li key={t}>
-                      <a href="#" className="hover:underline">
-                        {t}
-                      </a>
+              <div className="js-dropdown-panel absolute top-[66px] left-1/2 -translate-x-1/2 hidden bg-white border border-[#d9d9d9] shadow-md p-4 min-w-[160px] z-50">
+                <div className="font-bold mb-2 text-left text-[#0b78b6]">{menu.label}뱅킹</div>
+                <ul className="space-y-1 text-[12px] text-left">
+                  {menu.dropdown.map((d) => (
+                    <li key={d}>
+                      <a href="#" className="hover:underline cursor-pointer text-[#666]">{d}</a>
                     </li>
-                  )
-                )}
-              </ul>
+                  ))}
+                </ul>
+              </div>
             </div>
-          </HoverDropdown>
-
-          {/* 금융상품 (hover 메뉴) */}
-          <HoverDropdown
-            align="center"
-            trigger={
-              <button
-                type="button"
-                className="h-[46px] px-2 text-[13px] font-bold text-[#333] hover:text-[#0b78b6] whitespace-nowrap"
-                data-testid="gnb-금융상품"
-              >
-                금융상품
-              </button>
-            }
-          >
-            <div className="px-4 py-3 text-[12px] text-[#333] whitespace-nowrap">
-              <div className="font-bold mb-2">금융상품</div>
-              <ul className="space-y-1">
-                {[
-                  "추천상품",
-                  "예금",
-                  "펀드",
-                  "대출",
-                  "외환",
-                  "골드",
-                  "신탁",
-                  "보험",
-                  "퇴직연금",
-                  "We'llRich100",
-                  "ISA",
-                ].map((t) => (
-                  <li key={t}>
-                    <a href="#" className="hover:underline">
-                      {t}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </HoverDropdown>
-
-          {/* 우리사랑e나눔터 (그냥 버튼) */}
-          <button
-            type="button"
-            className="h-[46px] px-1 text-[13px] font-bold text-[#333] hover:text-[#0b78b6] whitespace-nowrap"
-            data-testid="gnb-우리사랑e나눔터"
-          >
-            우리사랑e나눔터
-          </button>
+          ))}
+          <button type="button" className="h-[66px] px-3 text-[14px] font-bold text-[#333] cursor-pointer hover:text-[#0b78b6]">카드</button>
+          <button type="button" className="h-[66px] px-3 text-[14px] font-bold text-[#333] cursor-pointer hover:text-[#0b78b6]">우리사랑e나눔터</button>
         </nav>
 
-        {/* 오른쪽: 전체서비스 + Language + 검색 */}
-        <div className="flex items-center justify-end gap-3 min-w-[210px]">
-          {/* 전체서비스 hover */}
-          <HoverDropdown
-            align="right"
-            trigger={
-              <button
-                type="button"
-                className="h-[46px] px-1 text-[13px] font-bold text-[#333] hover:text-[#0b78b6] whitespace-nowrap"
-                data-testid="header-all"
-              >
-                전체서비스
-              </button>
-            }
-          >
-            <div className="p-4 text-[12px] text-[#333] w-[420px]">
-              <div className="font-bold mb-2">전체서비스</div>
-              <div className="grid grid-cols-3 gap-4">
-                <div className="space-y-1">
-                  <div className="font-bold text-[#666]">바로가기</div>
-                  {[
-                    "자산/펀드",
-                    "보험센터",
-                    "론센터",
-                    "외환센터",
-                    "주택도시기금(주택청약)",
-                  ].map((t) => (
-                    <a key={t} href="#" className="block hover:underline">
-                      {t}
-                    </a>
+        {/* 오른쪽: 전체서비스 + Language + 검색 (텍스트 잘림 현상 수정) */}
+        <div className="flex items-center gap-2">
+          <div className="js-click-item relative cursor-pointer">
+            <button
+              type="button"
+              className="h-[66px] px-1 text-[13px] font-bold text-[#333] whitespace-nowrap pointer-events-none cursor-pointer hover:text-[#0b78b6]"
+            >
+              전체서비스
+            </button>
+            <div className="js-dropdown-panel absolute top-[66px] right-0 hidden bg-white border border-[#d9d9d9] shadow-md p-5 w-[420px] z-50">
+              <div className="font-bold mb-3 text-left border-b pb-2">전체서비스</div>
+              <div className="grid grid-cols-3 gap-4 text-[12px] text-left">
+                <div>
+                  <div className="font-bold text-[#666] mb-1">바로가기</div>
+                  {ALL_SERVICE_DATA.shortcut.map((t) => (
+                    <a key={t} className="block py-0.5 hover:underline cursor-pointer">{t}</a>
                   ))}
                 </div>
-                <div className="space-y-1">
-                  <div className="font-bold text-[#666]">스마트</div>
-                  {[
-                    "스마트금융",
-                    "투체어스PB",
-                    "제휴우대클럽",
-                    "머핀",
-                    "이벤트",
-                  ].map((t) => (
-                    <a key={t} href="#" className="block hover:underline">
-                      {t}
-                    </a>
+                <div>
+                  <div className="font-bold text-[#666] mb-1">스마트</div>
+                  {ALL_SERVICE_DATA.smart.map((t) => (
+                    <a key={t} className="block py-0.5 hover:underline cursor-pointer">{t}</a>
                   ))}
                 </div>
-                <div className="space-y-1">
-                  <div className="font-bold text-[#666]">고객</div>
-                  {[
-                    "고객광장",
-                    "보안센터",
-                    "은행소개/IR",
-                    "영업점안내",
-                    "웹진좋은예감",
-                  ].map((t) => (
-                    <a key={t} href="#" className="block hover:underline">
-                      {t}
-                    </a>
+                <div>
+                  <div className="font-bold text-[#666] mb-1">고객</div>
+                  {ALL_SERVICE_DATA.customer.map((t) => (
+                    <a key={t} className="block py-0.5 hover:underline cursor-pointer">{t}</a>
                   ))}
                 </div>
               </div>
             </div>
-          </HoverDropdown>
-
-          {/* Language hover */}
-          <HoverDropdown
-            align="right"
-            trigger={
-              <button
-                type="button"
-                className="h-[27px] px-2 text-[12px] font-bold text-white bg-[#0083CB] rounded whitespace-nowrap"
-                data-testid="header-language"
-              >
-                Language
-              </button>
-            }
-          >
-            <div className="px-4 py-3 text-[12px] text-[#333] w-[220px]">
-              <div className="font-bold mb-2">LANGUAGE</div>
-              <ul className="space-y-1">
-                {[
-                  "English",
-                  "Chinese (中國語 )",
-                  "Japanese (日本語)",
-                  "Filipino (Tagalog)",
-                  "Vietnamese (tiếng Việt)",
-                  "Mongolian (Монгол хэл)",
-                ].map((t) => (
-                  <li key={t}>
-                    <a href="#" className="hover:underline">
-                      {t}
-                    </a>
+          </div>
+          
+          <div className="js-click-item relative cursor-pointer">
+            <button
+              type="button"
+              className="h-[27px] px-2 text-[12px] font-bold text-white bg-[#0083CB] rounded whitespace-nowrap pointer-events-none cursor-pointer"
+            >
+              Language
+            </button>
+            <div className="js-dropdown-panel absolute top-[34px] right-0 hidden bg-white border border-[#d9d9d9] shadow-md p-3 w-[200px] text-left z-50">
+              <div className="font-bold mb-2 text-[12px] border-b pb-1">LANGUAGE</div>
+              <ul className="space-y-1 text-[12px]">
+                {LANGUAGES.map((l) => (
+                  <li key={l}>
+                    <a href="#" className="hover:underline cursor-pointer">{l}</a>
                   </li>
                 ))}
               </ul>
             </div>
-          </HoverDropdown>
-
-          {/* 검색 */}
-          <div className="flex items-center gap-1">
+          </div>
+          
+          <div className="flex items-center border-b border-[#cfcfcf] ml-1">
             <input
-              className="h-[22px] w-[86px] px-2 text-[11px] outline-none border-b text-[#777777]"
+              className="h-[22px] w-[80px] px-1 text-[11px] outline-none"
               defaultValue="위비멤버스"
-              data-testid="header-search-input"
             />
-            <button
-              type="button"
-              className="h-[22px] w-[22px] border border-[#cfcfcf] flex items-center justify-center text-[#777] bg-[#f5f5f5]"
-              data-testid="header-search-btn"
-              title="검색"
-            >
-              🔍
-            </button>
+            <SquareBtn icon="🔍" testId="header-search-btn" />
           </div>
         </div>
       </div>
