@@ -65,7 +65,7 @@ export default function LegacySlider() {
 
       // 하단 탭 스타일 업데이트
       $tabs
-        .css("background-color", "#b8b2b2")
+        .css("background-color", "#A4ACB1")
         .eq(idx)
         .css("background-color", "#2f95c9");
     }
@@ -137,39 +137,37 @@ export default function LegacySlider() {
               background: `${s.bgColor} url(${s.bgImg}) 50% 0 no-repeat`,
               display: i === 3 ? "block" : "none",
             }}
-          />
+          >
+            {i === 0 && (
+              <div className="absolute left-0 top-0 h-full w-[2px] bg-white shadow-[1px_0_0_rgba(0,0,0,0.12)]" />
+            )}
+          </div>
         ))}
 
         <div className="absolute bottom-6 left-1/2 flex -translate-x-1/2 items-center gap-3 z-20">
           <button
             type="button"
-            className="js-pause h-9 w-9 rounded-full bg-black/20 text-white"
+            className="js-pause h-9 w-9 rounded-full bg-black/30 text-white"
           >
             Ⅱ
           </button>
           <button
             type="button"
-            className="js-prev h-9 w-9 rounded-full bg-black/20 text-white font-bold"
+            className="js-prev h-9 w-9 rounded-full bg-black/30 text-white font-bold"
           >
             ‹
           </button>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center">
             {slides.map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                data-idx={i}
-                className="js-dot h-2 w-2 rounded-full bg-[#c8c8c8]"
-              />
+              <button key={i} type="button" data-idx={i} />
             ))}
           </div>
           <button
             type="button"
-            className="js-next h-9 w-9 rounded-full bg-black/20 text-white font-bold"
+            className="js-next h-9 w-9 rounded-full bg-black/30 text-white font-bold"
           >
             ›
           </button>
-          <span className="js-count ml-3 text-[12px] text-[#777]">1 / 5</span>
         </div>
       </div>
     </section>

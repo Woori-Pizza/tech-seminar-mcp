@@ -3,7 +3,7 @@ export default function LegacyFooter() {
   return (
     <footer className="w-full bg-white">
       {/* 상단 링크바 */}
-      <div className="border-t border-[#d9d9d9] bg-white">
+      <div className="border-t border-[#d9d9d9] bg-[#F8F8F8]">
         <div className="mx-auto w-[980px] py-4 flex items-center justify-between">
           {/* hover menus */}
           <div className="flex items-center gap-4 text-[12px] text-[#333]">
@@ -92,37 +92,17 @@ export default function LegacyFooter() {
               </div>
             </HoverDL>
           </div>
-
-          {/* SNS icons (더미) */}
-          <div className="flex items-center gap-2 text-[11px] text-[#666]">
-            {[
-              "facebook",
-              "instagram",
-              "post",
-              "youtube",
-              "naverTV",
-              "twitter",
-            ].map((t) => (
-              <div
-                key={t}
-                className="h-6 w-6 rounded-full border border-[#d9d9d9] flex items-center justify-center hover:bg-[#f7f7f7]"
-                title={t}
-              >
-                {t[0].toUpperCase()}
-              </div>
-            ))}
-          </div>
         </div>
       </div>
 
       {/* 하단 본문 */}
       <div className="bg-white">
-        <div className="mx-auto w-[980px] py-10 flex gap-6">
+        <div className="mx-auto w-[980px] py-10 flex">
           <div className="w-[140px] pt-1">
             <img
               alt="우리은행"
               className="h-[24px] w-auto opacity-80"
-              src="https://web.archive.org/web/20190227033832im_/https://simg.wooribank.com/img/common/footer/icon_woori.gif"
+              src="https://web.archive.org/web/20190225035655im_/https://simg.wooribank.com/img/common/footer/icon_woori.gif"
             />
           </div>
 
@@ -140,10 +120,7 @@ export default function LegacyFooter() {
                 고객광장
               </a>{" "}
               |{" "}
-              <a
-                className="hover:underline font-bold text-[#0b78b6]"
-                href="#none"
-              >
+              <a className="hover:underline" href="#none">
                 개인정보처리방침
               </a>{" "}
               |{" "}
@@ -179,21 +156,6 @@ export default function LegacyFooter() {
             <p className="mt-2 text-[#777]">
               COPYRIGHTS WOORI BANK. ALL RIGHTS RESERVED.
             </p>
-          </div>
-
-          {/* 아이콘 hover 더미 */}
-          <div className="w-[240px] flex items-start justify-end gap-3">
-            {["WA", "12Y", "BANKER"].map((t) => (
-              <div key={t} className="group relative">
-                <div className="h-[44px] w-[44px] border border-[#d9d9d9] bg-white flex items-center justify-center text-[11px] text-[#333]">
-                  {t}
-                </div>
-                <div className="hidden group-hover:block absolute right-0 top-[52px] w-[180px] border border-[#cfcfcf] bg-white shadow p-2 text-[11px] text-[#444]">
-                  {t} 인증/수상 더미 설명
-                  <div className="absolute -top-1 right-4 h-2 w-2 rotate-45 bg-white border-l border-t border-[#cfcfcf]" />
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </div>
