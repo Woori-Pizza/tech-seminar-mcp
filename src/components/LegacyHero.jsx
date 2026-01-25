@@ -1,4 +1,3 @@
-// src/components/LegacyHero.jsx
 import LegacySlider from "./LegacySlider";
 import LegacySliderTabs from "./LegacySliderTabs";
 

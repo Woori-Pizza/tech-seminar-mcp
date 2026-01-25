@@ -1,4 +1,3 @@
-// src/components/LegacyFooter.jsx
 export default function LegacyFooter() {
   return (
     <footer className="w-full bg-white">

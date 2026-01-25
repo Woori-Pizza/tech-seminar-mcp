@@ -1,4 +1,3 @@
-// src/components/LegacySliderTabs.jsx
 export default function LegacySliderTabs() {
   const tabs = [
     "특별한 하루",

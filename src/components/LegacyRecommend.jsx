@@ -1,4 +1,3 @@
-// src/components/LegacyRecommend.jsx
 export default function LegacyRecommend() {
   const items = [
     {
