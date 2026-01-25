@@ -1,4 +1,4 @@
-// Header Data
+// 1. Header GNB 및 상세 메뉴
 export const GNB_DATA = [
   {
     label: "개인",
@@ -55,6 +55,7 @@ export const GNB_DATA = [
   },
 ];
 
+// 2. 전체서비스 데이터
 export const ALL_SERVICE_DATA = {
   shortcut: [
     "자산/펀드",
@@ -73,6 +74,7 @@ export const ALL_SERVICE_DATA = {
   ],
 };
 
+// 3. 언어 데이터
 export const LANGUAGES = [
   "English",
   "Chinese (中國語 )",
@@ -82,7 +84,7 @@ export const LANGUAGES = [
   "Mongolian (Монгол хэл)",
 ];
 
-// Slider Data
+// 4. 슬라이더 및 탭 데이터
 export const SLIDE_DATA = [
   {
     key: "special-day",
@@ -123,7 +125,37 @@ export const SLIDE_TABS = [
   "서민금융 대표상품",
 ];
 
-// Footer Data
+// 5. 뉴스 데이터
+export const NEWS_ITEMS = [
+  "[공지]3·1운동 및 대한민국임시정부 수립 100...",
+  "[공지]「인터넷뱅킹 예금잔액증명 발급」시행 안내",
+  "[공지] '#우리은행_역사찾기' 공모전",
+];
+
+// 6. 추천상품 데이터
+export const RECOMMEND_ITEMS = [
+  {
+    img: "https://web.archive.org/web/20190225035628im_/https://www.wooribank.com/img/intro/news/product_20180907_4_1.png",
+    title: "로보-전문가 포트폴리오",
+    lines: ["로보-어드바이저/ 전문가가", "추천해드리는", "펀드 포트폴리오"],
+  },
+  {
+    img: "https://web.archive.org/web/20190225035631im_/https://www.wooribank.com/img/intro/news/product_20180907_4_3.png",
+    title: "추천펀드",
+    lines: ["우리은행이 추천해드리는", "펀드 상품으로", "스마트한 자산관리!"],
+  },
+  {
+    img: "https://web.archive.org/web/20190225035635im_/https://www.wooribank.com/img/intro/news/product_20180907_4_2.png",
+    title: "인터넷/모바일 방카",
+    lines: [
+      "언제 어디서나 편리한 가입!",
+      "저축보험, 연금보험,",
+      "암보험, 여행보험, 레저보험",
+    ],
+  },
+];
+
+// 7. 푸터 데이터
 export const FOOTER_LINKS = {
   others: [
     "법원환급금조회",
@@ -134,14 +166,6 @@ export const FOOTER_LINKS = {
     "지급보증서발급조회",
     "서울시예치금내역조회",
   ],
-  languages: [
-    "English",
-    "中國語",
-    "日本語",
-    "Tagalog",
-    "tiếng Việt",
-    "М온골 хэл",
-  ],
   family: [
     "우리금융지주",
     "우리에프아이에스",
@@ -151,6 +175,14 @@ export const FOOTER_LINKS = {
     "우리미소금융재단",
     "우리금융경영연구소",
     "우리종합금융",
+  ],
+  languages: [
+    "English",
+    "中國語",
+    "日本語",
+    "Tagalog",
+    "tiếng Việt",
+    "Монгол хэл",
   ],
   bottom: [
     "은행소개",
