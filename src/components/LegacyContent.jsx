@@ -1,4 +1,3 @@
-// src/components/LegacyContent.jsx
 export default function LegacyContent() {
   return (
     <section className="w-full bg-white">
@@ -71,7 +70,6 @@ function NoticeBox() {
         <h3 className="text-[14px] font-bold text-[#333]">우리알림</h3>
       </div>
 
-      {/* 레거시 스타일 카드(이미지 + 텍스트 + 상세보기) */}
       <div className="border border-[#e6e6e6] bg-white h-[110px] flex overflow-hidden">
         <div className="w-[110px] shrink-0 flex items-center justify-center bg-white">
           <img
