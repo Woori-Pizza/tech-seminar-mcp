@@ -6,14 +6,12 @@ import LegacyFooter from "./components/LegacyFooter";
 
 export default function App() {
   return (
-    <>
+    <div className="min-h-screen bg-white">
       <LegacyHeader />
       <LegacyHero />
-
       <LegacyContent />
       <LegacyRecommend />
-
       <LegacyFooter />
-    </>
+    </div>
   );
 }
