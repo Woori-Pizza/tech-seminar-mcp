@@ -155,7 +155,29 @@ export const RECOMMEND_ITEMS = [
   },
 ];
 
-// 7. 푸터 데이터
+// 7. 링크 카드 데이터
+export const LINK_CARDS = [
+  {
+    id: 1,
+    image: new URL('../assets/won-banking-image_56586a.png', import.meta.url).href,
+    title: '우리WON뱅킹',
+    description: '금융과 내가 만나 우리가 되다\n우리은행 대표 모바일 뱅킹',
+  },
+  {
+    id: 2,
+    image: new URL('../assets/won-enterprise-image_56586a.png', import.meta.url).href,
+    title: '우리WON기업',
+    description: '개인/법인사업자 특화 서비스로 채운\n기업 전용 모바일 뱅킹',
+  },
+  {
+    id: 3,
+    image: new URL('../assets/won-mobile-image_56586a.png', import.meta.url).href,
+    title: '우리WON모바일',
+    description: '금융과 통신을 한 번에\n우리은행이 만든 알뜰한 통신',
+  },
+];
+
+// 8. 푸터 데이터
 export const FOOTER_LINKS = {
   others: [
     "법원환급금조회",
