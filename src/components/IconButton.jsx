@@ -1,9 +1,34 @@
 import React from 'react';
 
 const IconButton = ({ icon, text, className = '', textClassName = '', onHover }) => {
+  const handleClick = async () => {
+    try {
+      const res = await fetch("http://localhost:4000/api/user");
+
+      if (!res.ok) {
+        throw new Error("API request failed");
+      }
+
+      const data = await res.json();
+
+      // MCP 시나리오 테스트 포인트
+      if (!("userName" in data)) {
+        console.error(
+          "[API Schema Error] userName field is missing",
+          data
+        );
+      } else {
+        console.log("userName:", data.userName);
+      }
+    } catch (err) {
+      console.error("API 호출 중 에러 발생", err);
+    }
+  };
+
   return (
     <div 
       className={`flex flex-col items-center justify-center transition-all duration-200 cursor-pointer ${className}`}
+      onClick={handleClick}
       // 보고 체계(onHover)는 유지
       onMouseEnter={() => onHover && onHover(true)} 
       onMouseLeave={() => onHover && onHover(false)}
