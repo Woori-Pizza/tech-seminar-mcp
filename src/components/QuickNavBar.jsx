@@ -67,9 +67,9 @@ const QuickNavBar = () => {
   }, [isPlaying, currentSlide]);
 
   return (
-    <div className="w-full">
+    <div className="w-full pb-8">
       {/* 상단 이미지 슬라이더 - 전체 너비 배경 */}
-      <div className="relative w-full h-[520px] bg-[#B5DAF8] mb-5">
+      <div className="relative w-full h-[520px] bg-[#B5DAF7] mb-5">
         {/* 중앙 정렬된 슬라이더 컨테이너 */}
         <div className="relative w-full max-w-[980px] h-full mx-auto overflow-hidden">
           {/* 슬라이더 래퍼 */}
