@@ -55,8 +55,8 @@ const ProductList = () => {
   };
 
   return (
-    // 전체 컨테이너: flex로 가로 배치, 너비는 내용물에 맞게(fit) 혹은 전체(w-full)
-    <div className="flex items-center w-fit h-[117px] gap-0">
+    // 전체 컨테이너: flex로 가로 배치, 가로 중앙 정렬을 위해 mx-auto 추가
+    <div className="flex items-center justify-center w-full h-[117px] gap-0">
       
       {/* 왼쪽 그룹 렌더링 */}
       <div className="flex">
