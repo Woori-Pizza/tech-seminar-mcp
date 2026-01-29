@@ -5,7 +5,7 @@ import { LINK_CARDS } from '../data/mockData';
 
 const LinkCardList = () => {
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center pb-8">
       <div className="w-[980px]">
         <Heading className="mb-8">서비스</Heading>
       </div>
