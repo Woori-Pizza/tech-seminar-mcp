@@ -1,16 +1,94 @@
-# React + Vite
+# 🏦 우리은행 메인 페이지 리뉴얼 (2019 → 2026)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> **2019년 우리은행 메인 페이지를  
+2026년 기준의 UX·UI·개발 방식으로 리뉴얼한 프로젝트**  
+>  
+> MCP(Model Context Protocol)를 활용해  
+디자인–개발–리뷰 과정의 맥락을 자동으로 연결한 것이 핵심입니다.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📌 프로젝트 개요
 
-## React Compiler
+본 프로젝트는  
+**2019년에 제작된 우리은행 메인 페이지를 2026년 기준으로 전면 리뉴얼**하는 것을 목표로 합니다.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+단순한 시각적 개선이 아닌, **MCP를 활용한 디자인–개발 협업 자동화**
+에 초점을 맞추어 진행되었습니다.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🕰️ Before — 2019 우리은행 메인 페이지
+
+- 정적인 레이아웃 중심
+- 디자인 스펙과 코드 간 수동 싱크
+- 컴포넌트 재사용성 낮음
+- 변경 시 커뮤니케이션 비용 큼
+
+### 📷 2019 메인 페이지
+![2019 Woori Bank Main](https://github.com/user-attachments/assets/936f9cfc-8f5e-46fb-9ab7-228af502aa00)
+
+
+---
+
+## 🚀 After — 2026 우리은행 메인 페이지
+
+- 컴포넌트 기반 UI 설계
+- 디자인 시스템 반영
+- 변경에 유연한 구조
+- MCP 기반 자동화 흐름 도입
+
+### 📷 2026 메인 페이지
+![2026 Woori Bank Main](https://github.com/user-attachments/assets/20f8bc89-ec8a-4c93-9428-3e924dc1f308)
+
+
+---
+
+## 🔧 리뉴얼 핵심 포인트
+
+### 1️⃣ UI/UX 개선
+- 금융 서비스 특성을 고려한 정보 위계 재정의
+- 주요 액션 중심의 사용자 흐름 설계
+- 불필요한 시각 요소 제거
+
+---
+
+### 2️⃣ 컴포넌트 중심 구조
+- 버튼, 카드, 레이아웃 단위 컴포넌트화
+- 유지보수성과 확장성 강화
+- 디자인 시스템 기반 구현
+
+---
+
+### 2️⃣ MCP(Model Context Protocol) 활용
+
+본 프로젝트에서는 MCP를 활용해  
+**디자인 → 코드 → 리뷰 → 테스트까지의 맥락을 연결**했습니다.
+
+- **Figma MCP**
+  - 디자인 스펙(색상, 레이아웃, 컴포넌트 구조) 자동 추출
+  - 디자인 변경 사항을 코드에 빠르게 반영
+    
+- **Storybook MCP**
+  - 컴포넌트 props 및 사용 사례 자동 탐색
+  - 레거시 컴포넌트와 신규 컴포넌트 간 중복·불일치 감지
+  - 디자인 스펙과 컴포넌트 구현 상태 비교
+
+- **GitHub MCP**
+  - PR 변경 사항 분석
+  - UI 코드와 디자인 스펙 간 불일치 자동 감지
+  - 코드 리뷰 자동화 지원
+
+- **Playwright MCP**
+  - 자연어 기반 UI 테스트 실행
+  - 버튼 클릭, API 호출, 응답 스키마 검증
+
+- **Slack MCP**
+  - PR·컴포넌트 관련 담당자 자동 추적
+  - 변경 맥락을 포함한 메시지 요약 및 응답
+  - 불필요한 커뮤니케이션 비용 감소
+
+결과적으로  
+**구현 속도 단축 + 커뮤니케이션 비용 감소**를 달성했습니다.
+
+
