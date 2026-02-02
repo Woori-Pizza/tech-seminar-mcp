@@ -220,14 +220,12 @@ UI 변경 이후 발생한 오류의 원인을
 ## 📁 폴더 구조
 ```
 📦src
- ┣ 📂assets
- ┣ 📂components
+ ┣ 📂assets       // 이미지, 아이콘 등 정적 파일들을 보관합니다.
+ ┣ 📂components   // 재사용 가능한 공통 UI 컴포넌트 (Button, Header 등)를 관리합니다.
  ┃ ┣ 📂icons
- ┣ 📂data
- ┣ 📜App.css
- ┣ 📜App.jsx
- ┣ 📜index.css
- ┗ 📜main.jsx
+ ┣ 📂data         // 메인 페이지 UI(GNB, 슬라이더, 추천상품, 푸터 등)를 구성하는 정적 데이터 패키지
+ ┣ 📜App.jsx      // 애플리케이션의 최상위 컴포넌트입니다.
+ ┗ 📜main.jsx     // 애플리케이션의 진입점(Entry Point)입니다.
 ```
 ## ▶️ 실행 방법
 
