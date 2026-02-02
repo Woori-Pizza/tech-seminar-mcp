@@ -235,3 +235,6 @@ npm run dev
 ```
 > `npm run dev`로 실행 가능하며,  
 > 레거시 구현은 `main`, 리뉴얼 버전은 `feature/current` 브랜치에서 확인할 수 있습니다.
+
+`main` 브랜치의 `cline_mcp_setting.json` 파일을 이용해서 Cline MCP 서버를 사용할 수 있습니다.
+
