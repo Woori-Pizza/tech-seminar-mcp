@@ -117,7 +117,7 @@ UI 컴포넌트를 빠르고 정확하게 구현하는 시나리오입니다.
 - 디자인과 코드의 완전한 동기화
 - 시각적 불일치 문제 최소화
 
-[시나리오1 이미지]
+<img width="628" height="374" alt="_____________1" src="https://github.com/user-attachments/assets/6ef19726-c52e-4973-96da-eb608293a89c" />
 
 ---
 
@@ -143,7 +143,7 @@ UI 컴포넌트를 빠르고 정확하게 구현하는 시나리오입니다.
 - 레거시 코드의 의도와 맥락 빠르게 파악
 - 불필요한 커뮤니케이션 제거
 
-[시나리오2 이미지]
+<img width="1244" height="959" alt="_____________2" src="https://github.com/user-attachments/assets/12a9eda1-5105-4390-aafa-b2c48581c47b" />
 
 ---
 
@@ -169,7 +169,7 @@ UI 컴포넌트를 빠르고 정확하게 구현하는 시나리오입니다.
 - 디자인 불일치 빠른 탐지
 - 휴가 복귀 직후에도 빠른 컨텍스트 복원
 
-[시나리오3 이미지]
+<img width="1244" height="296" alt="_____________3" src="https://github.com/user-attachments/assets/5ef70090-c9f1-45a0-878a-962a3fe71f0f" />
 
 ---
 
@@ -194,7 +194,7 @@ UI 변경 이후 발생한 오류의 원인을
 - 테스트 신뢰성 향상
 - 디버깅 비용 절감
 
-[시나리오4 이미지]
+<img width="448" height="576" alt="_____________4" src="https://github.com/user-attachments/assets/53c2a8d7-9756-46d8-a69d-d93757132edb" />
 
 ---
 
