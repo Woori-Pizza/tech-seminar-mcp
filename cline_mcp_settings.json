@@ -1,0 +1,53 @@
+{
+  "mcpServers": {
+    "storybook-mcp": {
+      "command": "node",
+      "args": [
+        "-y",
+        "@woori-fisa-6th/storybook-mcp"
+      ],
+      "env": {
+        "STORYBOOK_URL": "storybook_url_to_access"
+      }
+    },
+    "slack": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-slack"
+      ],
+      "env": {
+        "SLACK_BOT_TOKEN": "xoxb-your-bot-token-here",
+        "SLACK_TEAM_ID": "T01234567"
+      }
+    },
+    "github-remote": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
+      "env": {
+        "GITHUB_TOKEN": "token",
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "token"
+      }
+    },
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp"
+      ]
+    },
+    "Figma-Context-MCP": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "figma-developer-mcp",
+        "--figma-api-key=your_figma_api_key",
+        "--stdio"
+      ],
+      "disabled": true
+    }
+  }
+}
